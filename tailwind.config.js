@@ -1,0 +1,96 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    screens: {
+      'ph': '300px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+      '3xl': '1720px',
+    },
+    colors: {
+      softYellow: "#FFEE89",
+      hardYellow: "#FFC545",
+      softRed: "#FF0049",
+      hardRed: "#7C0A30",
+      softBlue: "#59DAFF",
+      orange: "#FB9927",
+      softBlue: "#59daff",
+
+      blue1: "#3373e9",
+      blue2: "#0e398a",
+      yellow: "#feb72f",
+      black: "#000000",
+      balckPhone: "#37363b",
+      blue: "#435fcb",
+      bluePhone: "#428aae",
+      transparent: "transparent",
+      white: "#ffffff",
+      whitePhone: "#f2f2f2",
+      purple: "#3f3cbb",
+      midnight: "#121063",
+      metal: "#565584",
+      tahiti: "#3ab7bf",
+      silver: "#ecebff",
+      gray: "#808080",
+      graphite: "#5c5b57",
+      bubbleGum: "#ff77e9",
+      bermuda: "#78dcca",
+      purple: "#b3abbd",
+      olive: "#a4a28c",
+      cream: "#f7f1e8",
+      brown: "#964B00",
+      lime: "#d9dfb7",
+      silver: "#C0C0C0",
+      Sierrablue: "#BFDAF7",
+      Burgundy: "#63313A",
+      Beige: "#F5F5DC",
+      Green: "#60765f",
+      red: "#FF0000",
+      mobileBlack: "#37363b",
+      mobileOlive: "#a4a28c",
+      mobilePurple: "#b3abbd",
+      mobileWhite: "#f2f2f2",
+      mobileCream: "#f7f1e8",
+      mobileBlue: "#428aae",
+      mobileGreen: "#60765f",
+      midgray: "#333",
+      lightgray: "#c7c7c7",
+      lightergray: "#d3d3d3",
+      lightWhite: "#ECEFF9",
+      lightBlue: "#435fcb",
+      ultragray: "#57534E",
+      ultrablue: "#4054B2",
+      ultrablack: "#242424",
+      submitgray: "#f3f3f3",
+      backgroundgray: "#f7f7f7",
+      purewhite: "#fff",
+      lighterwhiter: "#F9FAFB",
+      textgray: "#777",
+      textred: "#ff0000",
+      textlightblue: '#2196f3'
+    },
+    extend: {
+      cursor: {
+        default: 'url(/src/assets/cursor.png), default',
+        pointer: 'url(/src/assets/pointer.png), pointer',
+      },
+      animation: {
+        'loop-scroll': 'loop-scroll 50s linear infinite',
+      },
+      keyframes: {
+        'loop-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        }
+      }
+    }
+  },
+  plugins: [],
+}
+
