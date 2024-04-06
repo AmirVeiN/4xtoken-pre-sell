@@ -30,12 +30,18 @@ import step4 from "../assets/step4.png"
 
 import { useParallax } from "react-scroll-parallax";
 import Footer from '../components/Footer';
+import moment from "moment";
 
 export default function Home() {
 
+    const targetDate = "2024-05-06";
+
+    const isPast = moment(targetDate).isBefore();
+
     const [isMobile, setIsMobile] = useState(false)
     const [step, stepChanger] = useState(1);
-
+    const countDownToTime = new Date("May 6, 2024 00:00:00").getTime();
+    const [timer, setTimer] = useState(null);
 
     const parallax = useParallax({
         easing: "easeInQuad",
@@ -56,9 +62,35 @@ export default function Home() {
         }
     }
 
+    const StartTimer = () => {
+        const timeNow = new Date().getTime();
+        const timeDifference = countDownToTime - timeNow;
+        const millisecondsInOneSecond = 1000;
+        const millisecondsInOneMinute = millisecondsInOneSecond * 60;
+        const millisecondsInOneHour = millisecondsInOneMinute * 60;
+        const millisecondsInOneDay = millisecondsInOneHour * 24;
+        const differenceInDays = timeDifference / millisecondsInOneDay;
+        const remainderDifferenceInHours = (timeDifference % millisecondsInOneDay) / millisecondsInOneHour;
+        const remainderDifferenceInMinutes = (timeDifference % millisecondsInOneHour) / millisecondsInOneMinute;
+        const remainderDifferenceInSeconds = (timeDifference % millisecondsInOneMinute) / millisecondsInOneSecond;
+        const remainingDays = Math.floor(differenceInDays);
+        const remainingHours = Math.floor(remainderDifferenceInHours);
+        const remainingMinutes = Math.floor(remainderDifferenceInMinutes);
+        const remainingSeconds = Math.floor(remainderDifferenceInSeconds);
+        setTimer(remainingDays + " Days " + ": " + remainingHours + " Hours " + ": " + remainingMinutes + " Minutes " + ": " + remainingSeconds + " Seconds")
+    }
+
+
     useEffect(() => {
-        window.addEventListener("resize", handleResize)
-    })
+        const interval = setInterval(() => {
+            window.addEventListener("resize", handleResize)
+            StartTimer()
+        }, 1000);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, []);
 
     return (
         <div className="h-full w-full flex flex-col " style={{ background: `url(${background})`, backgroundSize: "auto", backgroundColor: "#59daff" }}>
@@ -102,6 +134,10 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+                {!isPast && <div className='3xl:w-[1000px] 2xl:w-[1000px] xl:w-[900px] lg:w-[900px] md:w-[600px] sm:w-[600px] ph:w-[300px] flex mb-20 flex-col justify-center items-center'>
+                    <p className='3xl:text-6xl 2xl:text-6xl xl:text-5xl lg:text-4xl md:text-4xl sm:text-3xl ph:text-3xl bg-blue1 text-white p-4 rounded-t-3xl'>Presale Timer</p>
+                    <div className='3xl:text-5xl 2xl:text-5xl xl:text-4xl lg:text-3xl md:text-3xl sm:text-2xl ph:text-2xl bg-red text-white p-5 rounded-3xl'>{timer}</div>
+                </div>}
                 <div className="flex 3xl:p-0 2xl:p-0 xl:p-5 lg:p-5 md:p-5 sm:p-0 ph:p-0 3xl:flex-row 2xl:flex-row xl:flex-row md:flex-row lg:flex-row sm:flex-col ph:flex-col w-full justify-center items-center relative mb-24 z-10">
                     <div>
                         {!isMobile ? <img src={img1} alt="" width={500} loading='lazy' /> : <img src={img1} alt="" width={300} loading='lazy' />}
@@ -200,30 +236,30 @@ export default function Home() {
                         </div>
                     </div>
                     <div className='flex w-[90%]'>
-                        <div class="flex overflow-hidden space-x-16 ">
-                            <div class="flex space-x-16 animate-loop-scroll">
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
+                        <div className="flex overflow-hidden space-x-16 ">
+                            <div className="flex space-x-16 animate-loop-scroll">
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
                             </div>
-                            <div class="flex space-x-16 animate-loop-scroll" aria-hidden="true">
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
-                                <img loading="lazy" src={bitmart} class="max-w-none" alt="" width={200} />
+                            <div className="flex space-x-16 animate-loop-scroll" aria-hidden="true">
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
+                                <img loading="lazy" src={bitmart} className="max-w-none" alt="" width={200} />
                             </div>
                         </div>
                     </div>
