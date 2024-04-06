@@ -31,6 +31,7 @@ import step4 from "../assets/step4.png"
 import { useParallax } from "react-scroll-parallax";
 import Footer from '../components/Footer';
 import moment from "moment";
+import presaleImg from "../assets/presale.png"
 
 export default function Home() {
 
@@ -134,7 +135,10 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                {!isPast && <div className='3xl:w-[1000px] 2xl:w-[1000px] xl:w-[900px] lg:w-[900px] md:w-[600px] sm:w-[600px] ph:w-[300px] flex mb-20 flex-col justify-center items-center'>
+                {!isPast && <div className='3xl:w-[1000px] 2xl:w-[1000px] xl:w-[900px] lg:w-[900px] md:w-[600px] sm:w-[600px] ph:w-[300px] flex mb-32 flex-col justify-center items-center'>
+                    <div >
+                        <img src={presaleImg} alt="" width={400} />
+                    </div>
                     <p className='3xl:text-6xl 2xl:text-6xl xl:text-5xl lg:text-4xl md:text-4xl sm:text-3xl ph:text-3xl bg-blue1 text-white p-4 rounded-t-3xl'>Presale Timer</p>
                     <div className='3xl:text-5xl 2xl:text-5xl xl:text-4xl lg:text-3xl md:text-3xl sm:text-2xl ph:text-2xl bg-red text-white p-5 rounded-3xl'>{timer}</div>
                 </div>}
